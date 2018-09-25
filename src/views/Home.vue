@@ -1,29 +1,38 @@
 <template>
-  <div class="home">
-    <Registration />
-    <ListAdd />
-    <Pagination :current='currentPage' @page-changed = 'buletenLength'/>
+  <div class="main">
+      <div class="main__registration">
+          <Registration />
+      </div>
+      <div class="main__list-buletens">
+          <Pagination :list-data="buletens"/>
+      </div>
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
   import Registration from "@/components/Registration.vue";
-  import ListAdd from "@/components/ListAdd.vue";
   import Pagination from "@/components/Pagination.vue";
-  
+
   export default {
     name: "home",
     data: function() {
       return {
-        buletensLength: this.$store.getters.buletensLength,
-        currentPage: this.$store.currentPage
+          buletens: this.$store.getters.buletens
       }
     },
     components: {
       Registration,
-      ListAdd,
       Pagination
     }
   };
 </script>
+
+<style lang="scss" scoped>
+    .main {
+        height: 100vh;
+        background: #FF5252;
+        overflow: hidden;
+    }
+    
+</style>
