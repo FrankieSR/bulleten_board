@@ -8,7 +8,7 @@ export default new Vuex.Store({
     buletens: [],
     buletensInStore: [],
     lsID: localStorage.id,
-    userInfo: []
+    userInfo: [{username: 'artem', pass: 'hello'}]
   },
   mutations: {
     ADD_BULETEN(state, buleten) {
