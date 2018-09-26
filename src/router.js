@@ -21,6 +21,33 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "CreateAd" */ "./views/CreateAd.vue")
+    },
+    {
+      path: "/account/:id",
+      name: "account",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "CreateAd" */ "./views/Account.vue")
+    },
+    {
+      path: "/new-account",
+      name: "new-account",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "CreateAd" */ "./views/NewAccount.vue")
+    },
+    {
+      path: "*",
+      name: "error404",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "CreateAd" */ "./views/Error404.vue")
     }
   ]
 });

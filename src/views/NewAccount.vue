@@ -1,25 +1,25 @@
 
 
 <template>
-  <div class="createAd">
-    <CreateNewAd />
+  <div class="new-account">
+    <h1>New account</h1>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import CreateNewAd from "@/components/CreateNewAd.vue";
+
 import vuex from "vuex";
 export default {
-  name: "createAd",
+  name: "newAccount",
   data: function() {
     return {};
   },
   components: {
-    CreateNewAd
+
   },
   mounted() {
-    this.$store.dispatch("initialBulletens");
+    
   }
 };
 </script>

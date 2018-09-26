@@ -1,70 +1,35 @@
 <template>
 <div>
-    <loader :visible = "visible"/>
-    <div class="board">
-        <div class="board__item" v-for="(item, index) in arrayData" :key='index'>
-            <h3 class="board__title">{{item.title}}</h3>
-            <p class="board__description">{{item.text}}</p>
-            <p class="board__author">{{item.user}}</p>
-            <p>{{item.time}}</p>
-            <img v-bind:src="item.image" />
-
-            <button v-if="item.user === 'artem'" v-on:click="deleted(index)">Delete</button>
+    <div>
+        <div class="loader" v-if="visible">
+            <div class="spinner">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
         </div>
-        <!-- <router-link tag="button" to="/create-ad">crete ad</router-link> -->
-        <button @click="routTo">CREATE AD</button>
-        <router-view/>
     </div>
 </div>
 </template>
 
 <script>
 import vuex from "vuex";
-import loader from "@/components/Loader.vue";
+
 export default {
-  name: "ListAds",
+  name: "Loader",
   props: {
-    arrayData: {
-      type: Array,
-      required: true
-    }
-  },
-  data: function() {
-    return {
-      visible: false
-    };
+    visible: false
   },
   methods: {
-    deleted: function(index) {
-      this.$store.dispatch("deleteBuleten", index);
-    },
-    routTo: function() {
-      this.visible = !this.visible;
-      setTimeout(() => this.$router.push({ path: "/create-ad" }), 2000);
-    }
-  },
-  components: {
-    loader
+
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.board {
-  max-width: 1280px;
-  margin: 100px auto;
-
-  &__item {
-    height: 50px;
-    border: 1px solid black;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 50px;
-  }
-}
-
 .loader {
   width: 100vw;
   height: 100vh;

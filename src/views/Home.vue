@@ -10,29 +10,33 @@
 </template>
 
 <script>
-  // @ is an alias to /src
-  import Registration from "@/components/Registration.vue";
-  import Pagination from "@/components/Pagination.vue";
+// @ is an alias to /src
+import vuex from "vuex";
+import Registration from "@/components/Registration.vue";
+import Pagination from "@/components/Pagination.vue";
 
-  export default {
-    name: "home",
-    data: function() {
-      return {
-          buletens: this.$store.getters.buletens
-      }
-    },
-    components: {
-      Registration,
-      Pagination
-    }
-  };
+export default {
+  name: "home",
+  data: function() {
+    return {
+      buletens: []
+    };
+  },
+  components: {
+    Registration,
+    Pagination
+  },
+  mounted() {
+    this.$store.dispatch("initialBulletens");
+    this.buletens = this.$store.getters.buletens;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-    .main {
-        height: 100vh;
-        background: #FF5252;
-        overflow: hidden;
-    }
-    
+.main {
+  height: calc(100vh - 70px);
+  background: #fff;
+  overflow: hidden;
+}
 </style>
